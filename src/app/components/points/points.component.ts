@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, signal, WritableSignal } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { getPlayerViewPoint } from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-points",
@@ -8,5 +9,10 @@ import { RouterModule } from "@angular/router";
 	styleUrl: "./points.component.css",
 })
 export class PointsComponent implements OnInit {
-	ngOnInit() {}
+	playerName: WritableSignal<string> = signal("");
+
+	ngOnInit() {
+		const playerName = getPlayerViewPoint();
+		this.playerName.set(playerName);
+	}
 }
