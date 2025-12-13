@@ -1,5 +1,31 @@
 <div>
-  <h2 class="text-center text-[0.8rem] text-teal-900">Puntos de {{ playerName() }}</h2>
+  <h2 class="text-center text-[0.8rem] text-teal-900">
+    Puntos de {{ playerName() }} - Total: {{ playerTotalPoints() }}
+  </h2>
+  <div class="h-[440px] overflow-y-auto">
+    @for (config of playerWords(); track $index) {
+      <p class="border-b-2 py-2 flex justify-between">
+        {{ config.word }} - Puntos: {{ config.point }}
+        <svg
+          (click)="onDeleteItem($index)"
+          class="cursor-pointer"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#100000"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      </p>
+    }
+  </div>
 </div>
 <div class="absolute left-0 bottom-0 w-full flex px-0 py-0">
   <a

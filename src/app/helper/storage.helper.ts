@@ -38,7 +38,7 @@ export const storageGetPlayersTreeConfig = () => {
 	}
 };
 
-const setStorageConfigTreePlayer = (records: any) => {
+export const storageSetTreeConfig = (records: any) => {
 	sessionStorage.setItem(STORAGE_PLAYERS_WORDS_KEY, JSON.stringify(records));
 };
 
@@ -51,11 +51,11 @@ export const storageSetPlayersTreeConfig = (players: Array<string>) => {
 		};
 	}
 
-	setStorageConfigTreePlayer(structure);
+	storageSetTreeConfig(structure);
 };
 
 export const storageSetRecordsForPlayer = (player: string, records: any) => {
 	const playersTreeConfig = storageGetPlayersTreeConfig();
 	playersTreeConfig[player].words.push(records);
-	setStorageConfigTreePlayer(playersTreeConfig);
+	storageSetTreeConfig(playersTreeConfig);
 };
