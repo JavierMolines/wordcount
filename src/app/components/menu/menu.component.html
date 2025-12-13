@@ -30,6 +30,14 @@
     >
       Nueva partida
     </a>
-    <button class="w-1/2 rounded-2xl p-2">Proximamente</button>
+
+    @if (playerInStorage()) {
+      <a
+        [routerLink]="['/game']"
+        class="text-center cursor-pointer w-1/2 bg-white hover:bg-gray-200 rounded-2xl p-2"
+      >
+        Continuar partida
+      </a>
+    }
   </div>
 </div>

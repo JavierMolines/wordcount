@@ -1,5 +1,6 @@
 import { Component, signal, WritableSignal } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { loadPlayers } from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-game-board",
@@ -11,17 +12,8 @@ export class GameBoardComponent {
 	players: WritableSignal<Array<string>> = signal([]);
 
 	ngOnInit() {
-		const players = this.loadPlayers();
+		const players = loadPlayers();
 		console.log("Loaded players:", players);
 		this.players.set(players);
-	}
-
-	private loadPlayers(): Array<string> {
-		try {
-			const storePlayers = sessionStorage.getItem("players") || "";
-			return JSON.parse(storePlayers);
-		} catch {
-			return [];
-		}
 	}
 }
