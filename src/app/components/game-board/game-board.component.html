@@ -1,6 +1,6 @@
 <h1 class="text-3xl text-center p-4 mb-8">Contador de palabras</h1>
 
-<div class="border-amber-700 bg-white border-4 p-5 rounded-2xl w-125 h-150 relative">
+<div class="border-amber-700 bg-white border-4 p-5 rounded-2xl w-[500px] h-[600px] relative">
   <div>
     <p class="text-center">Historial de partidas</p>
     <ul class="h-[500px] overflow-y-auto">
@@ -24,9 +24,12 @@
     </ul>
   </div>
   <div class="absolute left-0 bottom-0 w-full flex px-0 py-0">
-    <button class="cursor-pointer w-1/2 bg-white hover:bg-gray-200 rounded-2xl p-2">
+    <a
+      [routerLink]="['/users']"
+      class="text-center cursor-pointer w-1/2 bg-white hover:bg-gray-200 rounded-2xl p-2"
+    >
       Nueva partida
-    </button>
+    </a>
     <button class="w-1/2 rounded-2xl p-2">Proximamente</button>
   </div>
 </div>
