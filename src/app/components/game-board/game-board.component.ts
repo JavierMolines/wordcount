@@ -1,6 +1,10 @@
 import { Component, OnInit, signal, WritableSignal } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
-import { loadPlayers, setPlayerViewPoint } from "../../helper/storage.helper";
+import {
+	storageGetPlayers,
+	storageSetPlayersTreeConfig,
+	storageSetPlayerViewPoint,
+} from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-game-board",
@@ -14,12 +18,13 @@ export class GameBoardComponent implements OnInit {
 	constructor(private router: Router) {}
 
 	ngOnInit() {
-		const players = loadPlayers();
+		const players = storageGetPlayers();
 		this.players.set(players);
+		storageSetPlayersTreeConfig(players);
 	}
 
 	pressPlayer(player: string) {
-		setPlayerViewPoint(player);
+		storageSetPlayerViewPoint(player);
 		this.router.navigate(["/points"]);
 	}
 }

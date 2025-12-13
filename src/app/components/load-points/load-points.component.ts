@@ -8,7 +8,7 @@ import {
 	ɵInternalFormsSharedModule,
 } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { loadPlayers } from "../../helper/storage.helper";
+import { storageGetPlayers } from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-load-points",
@@ -34,7 +34,7 @@ export class LoadPointsComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		const players = loadPlayers();
+		const players = storageGetPlayers();
 		this.players.set(players);
 	}
 
