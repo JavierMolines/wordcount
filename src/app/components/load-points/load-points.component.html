@@ -1,6 +1,52 @@
-<div>
+<form [formGroup]="form" class="flex flex-col gap-4 p-2">
   <h2 class="text-center text-[0.8rem] text-teal-900">Cargar puntos</h2>
-</div>
+
+  <select
+    class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500"
+    formControlName="select"
+    name="playersAvailable"
+    aria-label="playersAvailable"
+  >
+    <option value="" selected>Jugador</option>
+    @for (option of players(); track $index) {
+      <option value="{{ option }}">{{ option }}</option>
+    }
+  </select>
+
+  <input
+    required
+    type="text"
+    maxlength="30"
+    placeholder="Ingrese su palabra(s)"
+    formControlName="item1"
+    name="playersWordWrite"
+    aria-label="playersWordWrite"
+    class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500"
+  />
+
+  <input
+    required
+    type="number"
+    min="1"
+    max="1000"
+    placeholder="Ingrese los puntos"
+    formControlName="item2"
+    name="playersPointsGain"
+    aria-label="playersPointsGain"
+    class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500"
+  />
+
+  <button
+    (click)="onClickButton()"
+    class="w-full font-bold py-2 px-4 rounded-md"
+    [ngClass]="{
+      'bg-teal-700 hover:bg-teal-800 text-white': form.valid,
+      'bg-gray-400 text-gray-700 cursor-not-allowed': !form.valid,
+    }"
+  >
+    Cargar puntos
+  </button>
+</form>
 <div class="absolute left-0 bottom-0 w-full flex px-0 py-0">
   <a
     [routerLink]="['/game']"
