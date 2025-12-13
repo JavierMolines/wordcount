@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 @Component({
@@ -7,4 +7,6 @@ import { RouterModule } from "@angular/router";
 	templateUrl: "./points.component.html",
 	styleUrl: "./points.component.css",
 })
-export class PointsComponent {}
+export class PointsComponent implements OnInit {
+	ngOnInit() {}
+}

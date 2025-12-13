@@ -1,4 +1,4 @@
-import { Component, signal } from "@angular/core";
+import { Component, OnInit, signal } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { clearPlayers } from "../../helper/storage.helper";
@@ -9,7 +9,7 @@ import { clearPlayers } from "../../helper/storage.helper";
 	templateUrl: "./create-user.component.html",
 	styleUrl: "./create-user.component.css",
 })
-export class CreateUserComponent {
+export class CreateUserComponent implements OnInit {
 	mininumPlayersValids = 2;
 	validToStartGame = signal(false);
 	formPlayers: FormGroup;
