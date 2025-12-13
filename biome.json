@@ -21,7 +21,8 @@
 	"files": {
 		"includes": [
 			".vscode/**",
-			"./src/**",
+			"./src/**/*.ts",
+			"./src/**/*.css",
 			"./*.json",
 			"./*.config.ts",
 			"./test/**"
