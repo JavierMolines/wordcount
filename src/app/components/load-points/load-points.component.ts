@@ -8,7 +8,10 @@ import {
 	ɵInternalFormsSharedModule,
 } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { storageGetPlayers } from "../../helper/storage.helper";
+import {
+	storageGetPlayers,
+	storageSetRecordsForPlayer,
+} from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-load-points",
@@ -27,9 +30,9 @@ export class LoadPointsComponent implements OnInit {
 
 	constructor(private fb: FormBuilder) {
 		this.form = this.fb.group({
-			item1: ["", Validators.required],
-			item2: ["", Validators.required],
-			select: ["", Validators.required],
+			word: ["", Validators.required],
+			point: ["", Validators.required],
+			player: ["", Validators.required],
 		});
 	}
 
@@ -43,6 +46,15 @@ export class LoadPointsComponent implements OnInit {
 			return;
 		}
 
-		console.log("Button clicked");
+		storageSetRecordsForPlayer(this.form.value.player, this.form.value);
+		this.resetForm();
+	}
+
+	private resetForm(): void {
+		this.form.reset({
+			word: "",
+			point: "",
+			player: "",
+		});
 	}
 }

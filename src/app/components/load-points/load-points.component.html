@@ -3,7 +3,7 @@
 
   <select
     class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500"
-    formControlName="select"
+    formControlName="player"
     name="playersAvailable"
     aria-label="playersAvailable"
   >
@@ -18,7 +18,7 @@
     type="text"
     maxlength="30"
     placeholder="Ingrese su palabra(s)"
-    formControlName="item1"
+    formControlName="word"
     name="playersWordWrite"
     aria-label="playersWordWrite"
     class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500"
@@ -30,13 +30,14 @@
     min="1"
     max="1000"
     placeholder="Ingrese los puntos"
-    formControlName="item2"
+    formControlName="point"
     name="playersPointsGain"
     aria-label="playersPointsGain"
     class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500"
   />
 
   <button
+    type="button"
     (click)="onClickButton()"
     class="w-full font-bold py-2 px-4 rounded-md"
     [ngClass]="{

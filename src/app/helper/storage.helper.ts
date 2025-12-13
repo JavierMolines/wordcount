@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: it necesary */
 const STORAGE_PLAYERS_KEY = "players";
 const STORAGE_SELECTED_PLAYER_KEY = "selectedPlayer";
 const STORAGE_PLAYERS_WORDS_KEY = "playersWords";
@@ -37,8 +38,11 @@ export const storageGetPlayersTreeConfig = () => {
 	}
 };
 
+const setStorageConfigTreePlayer = (records: any) => {
+	sessionStorage.setItem(STORAGE_PLAYERS_WORDS_KEY, JSON.stringify(records));
+};
+
 export const storageSetPlayersTreeConfig = (players: Array<string>) => {
-	// biome-ignore lint/suspicious/noExplicitAny: it necesary
 	const structure: any = {};
 
 	for (const player of players) {
@@ -47,5 +51,11 @@ export const storageSetPlayersTreeConfig = (players: Array<string>) => {
 		};
 	}
 
-	sessionStorage.setItem(STORAGE_PLAYERS_WORDS_KEY, JSON.stringify(structure));
+	setStorageConfigTreePlayer(structure);
+};
+
+export const storageSetRecordsForPlayer = (player: string, records: any) => {
+	const playersTreeConfig = storageGetPlayersTreeConfig();
+	playersTreeConfig[player].words.push(records);
+	setStorageConfigTreePlayer(playersTreeConfig);
 };

@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import {
 	storageClearPlayers,
 	storageSetPlayers,
+	storageSetPlayersTreeConfig,
 } from "../../helper/storage.helper";
 
 @Component({
@@ -35,9 +36,21 @@ export class CreateUserComponent implements OnInit {
 		const inputsWithText = inputs.filter(
 			(text) => text && text.trim() !== "" && text.length > 2,
 		);
-		this.validToStartGame.set(
-			inputsWithText.length >= this.mininumPlayersValids,
-		);
-		storageSetPlayers(JSON.stringify(inputsWithText));
+
+		const inputsValids = inputsWithText.length >= this.mininumPlayersValids;
+		const noRepeatedNames = this.validateNonRepeatedNames(inputsWithText);
+		const result = inputsValids && noRepeatedNames;
+
+		this.validToStartGame.set(result);
+
+		if (result) {
+			storageSetPlayers(JSON.stringify(inputsWithText));
+			storageSetPlayersTreeConfig(inputsWithText);
+		}
+	}
+
+	private validateNonRepeatedNames(players: Array<string>): boolean {
+		const normalized = players.map((t) => t.toLowerCase().trim());
+		return new Set(normalized).size === normalized.length;
 	}
 }
