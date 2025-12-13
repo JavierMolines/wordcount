@@ -6,3 +6,7 @@ export const loadPlayers = (): Array<string> => {
 		return [];
 	}
 };
+
+export const clearPlayers = (): void => {
+	sessionStorage.removeItem("players");
+};

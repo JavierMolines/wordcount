@@ -1,6 +1,7 @@
 import { Component, signal } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { clearPlayers } from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-create-user",
@@ -20,6 +21,10 @@ export class CreateUserComponent {
 			player3: [""],
 			player4: [""],
 		});
+	}
+
+	ngOnInit() {
+		clearPlayers();
 	}
 
 	validateInputsContent() {
