@@ -3,29 +3,33 @@
 <div class="border-amber-700 bg-white border-4 p-5 rounded-2xl w-125 h-150 relative">
   <div>
     <h2 class="text-center">Jugadores</h2>
-    <form class="px-2 py-4 flex flex-col gap-4">
+    <form [formGroup]="formPlayers" class="px-2 py-4 flex flex-col gap-4">
       <input
         type="text"
-        name="player1"
-        placeholder="Jugador 1"
+        formControlName="player1"
+        (input)="validateInputsContent()"
+        placeholder="Jugador 1 (Min: 3letras)"
         class="text-2xl p-2 border-b-2 border-s-teal-800"
       />
       <input
         type="text"
-        name="player2"
-        placeholder="Jugador 2"
+        formControlName="player2"
+        (input)="validateInputsContent()"
+        placeholder="Jugador 2 (Min: 3letras)"
         class="text-2xl p-2 border-b-2 border-s-teal-800"
       />
       <input
         type="text"
-        name="player3"
-        placeholder="Jugador 3"
+        formControlName="player3"
+        (input)="validateInputsContent()"
+        placeholder="Jugador 3 (Min: 3letras)"
         class="text-2xl p-2 border-b-2 border-s-teal-800"
       />
       <input
         type="text"
-        name="player4"
-        placeholder="Jugador 4"
+        formControlName="player4"
+        (input)="validateInputsContent()"
+        placeholder="Jugador 4 (Min: 3letras)"
         class="text-2xl p-2 border-b-2 border-s-teal-800"
       />
     </form>
@@ -37,11 +41,14 @@
     >
       Menu
     </a>
-    <a
-      [routerLink]="['/']"
-      class="text-center cursor-pointer w-1/2 bg-white hover:bg-gray-200 rounded-2xl p-2"
-    >
-      Iniciar partida
-    </a>
+
+    @if (validToStartGame()) {
+      <a
+        [routerLink]="['/']"
+        class="text-center cursor-pointer w-1/2 bg-white hover:bg-gray-200 rounded-2xl p-2"
+      >
+        Iniciar partida
+      </a>
+    }
   </div>
 </div>
