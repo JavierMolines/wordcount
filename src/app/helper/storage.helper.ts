@@ -59,3 +59,7 @@ export const storageSetRecordsForPlayer = (player: string, records: any) => {
 	playersTreeConfig[player].words.push(records);
 	storageSetTreeConfig(playersTreeConfig);
 };
+
+export const storageSetClearAll = (): void => {
+	sessionStorage.clear();
+};
