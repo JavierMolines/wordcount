@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { clearPlayers } from "../../helper/storage.helper";
+import { clearPlayers, setPlayers } from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-create-user",
@@ -35,6 +35,6 @@ export class CreateUserComponent implements OnInit {
 		this.validToStartGame.set(
 			inputsWithText.length >= this.mininumPlayersValids,
 		);
-		sessionStorage.setItem("players", JSON.stringify(inputsWithText));
+		setPlayers(JSON.stringify(inputsWithText));
 	}
 }
