@@ -1,6 +1,6 @@
 import { Component, signal, WritableSignal } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { loadPlayers } from "../../helper/storage.helper";
+import { Router, RouterModule } from "@angular/router";
+import { loadPlayers, setPlayerViewPoint } from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-game-board",
@@ -11,9 +11,15 @@ import { loadPlayers } from "../../helper/storage.helper";
 export class GameBoardComponent {
 	players: WritableSignal<Array<string>> = signal([]);
 
+	constructor(private router: Router) {}
+
 	ngOnInit() {
 		const players = loadPlayers();
-		console.log("Loaded players:", players);
 		this.players.set(players);
+	}
+
+	pressPlayer(player: string) {
+		setPlayerViewPoint(player);
+		this.router.navigate(["/points"]);
 	}
 }
