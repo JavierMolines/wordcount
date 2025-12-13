@@ -1,0 +1,22 @@
+<div>
+  <p class="text-center">Historial de partidas</p>
+  <div class="h-[440px] overflow-y-auto">
+    @for (item of players(); track $index) {
+      <h2 class="text-center pt-2">{{ item[0] }} - Total {{ item[1].total }}</h2>
+
+      @for (subItem of item[1].words; track $index) {
+        <p>{{ subItem.word }} - Puntos: {{ subItem.point }}</p>
+      }
+
+      <p class="border-b-2 py-2"></p>
+    }
+  </div>
+</div>
+<div class="absolute left-0 bottom-0 w-full flex px-0 py-0">
+  <a
+    [routerLink]="['/']"
+    class="text-center cursor-pointer w-full bg-white hover:bg-gray-200 rounded-2xl p-2"
+  >
+    Menu
+  </a>
+</div>

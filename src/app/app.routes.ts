@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { CreateUserComponent } from "./components/create-user/create-user.component";
+import { EndGameComponent } from "./components/end-game/end-game.component";
 import { GameBoardComponent } from "./components/game-board/game-board.component";
 import { LoadPointsComponent } from "./components/load-points/load-points.component";
 import { MenuComponent } from "./components/menu/menu.component";
@@ -25,5 +26,9 @@ export const routes: Routes = [
 	{
 		path: "load-points",
 		component: LoadPointsComponent,
+	},
+	{
+		path: "end-game",
+		component: EndGameComponent,
 	},
 ];
