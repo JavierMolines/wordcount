@@ -1,0 +1,30 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"complexity": {
+				"useLiteralKeys": "off"
+			},
+			"style": {
+				"useImportType": "off"
+			}
+		}
+	},
+	"javascript": {
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		}
+	},
+	"files": {
+		"includes": [
+			".vscode/**",
+			"./src/**/.ts",
+			"./*.json",
+			"./*.config.ts",
+			"./test/**"
+		]
+	}
+}
