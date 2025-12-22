@@ -1,6 +1,10 @@
 <div>
   <p class="text-center text-teal-900">Historial de partidas</p>
-  <div class="h-[440px] overflow-y-auto"></div>
+  <div class="h-[440px] overflow-y-auto">
+    @for (element of gamesHistoryVisible(); track $index) {
+      <p class="p-2 border-b-2">{{ element }}</p>
+    }
+  </div>
 </div>
 <div class="absolute left-0 bottom-0 w-full flex px-0 py-0">
   <a

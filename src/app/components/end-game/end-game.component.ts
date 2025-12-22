@@ -2,6 +2,8 @@
 
 import { Component, OnInit, signal, WritableSignal } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { dateGenerateToString } from "../../helper/dates.helper";
+import { localStorageSetSaveGameRecords } from "../../helper/localStorage.helper";
 import {
 	storageGetPlayersTreeConfig,
 	storageSetClearAll,
@@ -36,5 +38,21 @@ export class EndGameComponent implements OnInit {
 		this.players.set(sortByTotal);
 
 		storageSetClearAll();
+
+		// Save game records to local storage
+		if (configPlayers.length === 0) {
+			return;
+		}
+
+		const payload: SaveGameRecord = {
+			date: dateGenerateToString(),
+			game: configPlayers,
+			winner: sortByTotal[0][0],
+			winnerPoints: sortByTotal[0][1].total,
+			players: sortByTotal.length,
+			isRecords: true,
+		};
+
+		localStorageSetSaveGameRecords(payload);
 	}
 }
