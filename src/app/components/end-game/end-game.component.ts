@@ -2,7 +2,10 @@
 
 import { Component, OnInit, signal, WritableSignal } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { storageGetPlayersTreeConfig } from "../../helper/storage.helper";
+import {
+	storageGetPlayersTreeConfig,
+	storageSetClearAll,
+} from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-end-game",
@@ -32,6 +35,6 @@ export class EndGameComponent implements OnInit {
 
 		this.players.set(sortByTotal);
 
-		//storageSetClearAll();
+		storageSetClearAll();
 	}
 }
