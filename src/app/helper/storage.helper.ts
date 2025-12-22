@@ -47,6 +47,7 @@ export const storageSetPlayersTreeConfig = (players: Array<string>) => {
 
 	for (const player of players) {
 		structure[player] = {
+			negativePoints: 0,
 			words: [],
 		};
 	}
@@ -57,6 +58,15 @@ export const storageSetPlayersTreeConfig = (players: Array<string>) => {
 export const storageSetRecordsForPlayer = (player: string, records: any) => {
 	const playersTreeConfig = storageGetPlayersTreeConfig();
 	playersTreeConfig[player].words.push(records);
+	storageSetTreeConfig(playersTreeConfig);
+};
+
+export const storageSetRecordsNegativePointsForPlayer = (
+	player: string,
+	points: number,
+) => {
+	const playersTreeConfig = storageGetPlayersTreeConfig();
+	playersTreeConfig[player].negativePoints = points;
 	storageSetTreeConfig(playersTreeConfig);
 };
 

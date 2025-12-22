@@ -2,10 +2,7 @@
 
 import { Component, OnInit, signal, WritableSignal } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import {
-	storageGetPlayersTreeConfig,
-	storageSetClearAll,
-} from "../../helper/storage.helper";
+import { storageGetPlayersTreeConfig } from "../../helper/storage.helper";
 
 @Component({
 	selector: "app-end-game",
@@ -22,10 +19,11 @@ export class EndGameComponent implements OnInit {
 
 		for (const element of configConvert) {
 			const playersWords = element[1].words;
-			const total = playersWords.reduce((acc: number, word: any) => {
+			const totalPointsWords = playersWords.reduce((acc: number, word: any) => {
 				return acc + word.point;
 			}, 0);
-			element[1].total = total;
+			element[1].totalPointsWords = totalPointsWords;
+			element[1].total = totalPointsWords - element[1].negativePoints;
 		}
 
 		const sortByTotal = configConvert.sort((a: any, b: any) => {
@@ -34,6 +32,6 @@ export class EndGameComponent implements OnInit {
 
 		this.players.set(sortByTotal);
 
-		storageSetClearAll();
+		//storageSetClearAll();
 	}
 }

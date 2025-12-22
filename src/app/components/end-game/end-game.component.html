@@ -3,6 +3,9 @@
   <div class="h-[440px] overflow-y-auto">
     @for (item of players(); track $index) {
       <h2 class="text-center pt-2">{{ item[0] }} - Total {{ item[1].total }}</h2>
+      <h3 class="text-center text-[11px]">
+        Total sin mano {{ item[1].totalPointsWords }} - Mano({{ item[1].negativePoints }})
+      </h3>
 
       @for (subItem of item[1].words; track $index) {
         <p>{{ subItem.word }} - Puntos: {{ subItem.point }}</p>

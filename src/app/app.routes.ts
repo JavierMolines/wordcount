@@ -1,34 +1,51 @@
 import { Routes } from "@angular/router";
-import { CreateUserComponent } from "./components/create-user/create-user.component";
-import { EndGameComponent } from "./components/end-game/end-game.component";
-import { GameBoardComponent } from "./components/game-board/game-board.component";
-import { LoadPointsComponent } from "./components/load-points/load-points.component";
-import { MenuComponent } from "./components/menu/menu.component";
-import { PointsComponent } from "./components/points/points.component";
 
 export const routes: Routes = [
 	{
 		path: "",
-		component: MenuComponent,
+		loadComponent: () =>
+			import("./components/menu/menu.component").then((m) => m.MenuComponent),
 	},
 	{
 		path: "users",
-		component: CreateUserComponent,
+		loadComponent: () =>
+			import("./components/create-user/create-user.component").then(
+				(m) => m.CreateUserComponent,
+			),
 	},
 	{
 		path: "game",
-		component: GameBoardComponent,
+		loadComponent: () =>
+			import("./components/game-board/game-board.component").then(
+				(m) => m.GameBoardComponent,
+			),
 	},
 	{
 		path: "points",
-		component: PointsComponent,
+		loadComponent: () =>
+			import("./components/points/points.component").then(
+				(m) => m.PointsComponent,
+			),
 	},
 	{
 		path: "load-points",
-		component: LoadPointsComponent,
+		loadComponent: () =>
+			import("./components/load-points/load-points.component").then(
+				(m) => m.LoadPointsComponent,
+			),
+	},
+	{
+		path: "review",
+		loadComponent: () =>
+			import("./components/review-points/review-points.component").then(
+				(m) => m.ReviewPointsComponent,
+			),
 	},
 	{
 		path: "end-game",
-		component: EndGameComponent,
+		loadComponent: () =>
+			import("./components/end-game/end-game.component").then(
+				(m) => m.EndGameComponent,
+			),
 	},
 ];
