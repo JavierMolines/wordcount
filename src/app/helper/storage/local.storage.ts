@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: it necesary */
-
 const STORAGE_PLAYERS_SAVE_RECORDS = "gamesHistory";
 
 export const localStorageGetSaveGameRecords = () => {
@@ -14,7 +12,7 @@ export const localStorageGetSaveGameRecords = () => {
 	}
 };
 
-export const localStorageSetSaveGameRecords = (records: any) => {
+export const localStorageSetSaveGameRecords = (records: SaveGameRecord) => {
 	try {
 		const storeRecords =
 			localStorage.getItem(STORAGE_PLAYERS_SAVE_RECORDS) || "[]";

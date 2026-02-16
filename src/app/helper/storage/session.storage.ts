@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: it necesary */
 const STORAGE_PLAYERS_KEY = "players";
 const STORAGE_SELECTED_PLAYER_KEY = "selectedPlayer";
 const STORAGE_PLAYERS_WORDS_KEY = "playersWords";
@@ -28,22 +27,22 @@ export const storageGetPlayerViewPoint = () => {
 	return sessionStorage.getItem(STORAGE_SELECTED_PLAYER_KEY) || "";
 };
 
-export const storageGetPlayersTreeConfig = () => {
+export const storageGetPlayersTreeConfig = (): GameInformation => {
 	try {
 		return JSON.parse(
-			sessionStorage.getItem(STORAGE_PLAYERS_WORDS_KEY) || "[]",
+			sessionStorage.getItem(STORAGE_PLAYERS_WORDS_KEY) || "{}",
 		);
 	} catch {
-		return [];
+		return {};
 	}
 };
 
-export const storageSetTreeConfig = (records: any) => {
+export const storageSetTreeConfig = (records: GameInformation) => {
 	sessionStorage.setItem(STORAGE_PLAYERS_WORDS_KEY, JSON.stringify(records));
 };
 
 export const storageSetPlayersTreeConfig = (players: Array<string>) => {
-	const structure: any = {};
+	const structure: GameInformation = {};
 
 	for (const player of players) {
 		structure[player] = {
@@ -55,7 +54,10 @@ export const storageSetPlayersTreeConfig = (players: Array<string>) => {
 	storageSetTreeConfig(structure);
 };
 
-export const storageSetRecordsForPlayer = (player: string, records: any) => {
+export const storageSetRecordsForPlayer = (
+	player: string,
+	records: WordSettings,
+) => {
 	const playersTreeConfig = storageGetPlayersTreeConfig();
 	playersTreeConfig[player].words.push(records);
 	storageSetTreeConfig(playersTreeConfig);
