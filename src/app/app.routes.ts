@@ -1,51 +1,39 @@
 import { Routes } from "@angular/router";
+import { CreateUserComponent } from "./components/create-user/create-user.component";
+import { EndGameComponent } from "./components/end-game/end-game.component";
+import { GameBoardComponent } from "./components/game-board/game-board.component";
+import { LoadPointsComponent } from "./components/load-points/load-points.component";
+import { MenuComponent } from "./components/menu/menu.component";
+import { PointsComponent } from "./components/points/points.component";
+import { ReviewPointsComponent } from "./components/review-points/review-points.component";
 
 export const routes: Routes = [
 	{
 		path: "",
-		loadComponent: () =>
-			import("./components/menu/menu.component").then((m) => m.MenuComponent),
+		component: MenuComponent,
 	},
 	{
 		path: "users",
-		loadComponent: () =>
-			import("./components/create-user/create-user.component").then(
-				(m) => m.CreateUserComponent,
-			),
+		component: CreateUserComponent,
 	},
 	{
 		path: "game",
-		loadComponent: () =>
-			import("./components/game-board/game-board.component").then(
-				(m) => m.GameBoardComponent,
-			),
+		component: GameBoardComponent,
 	},
 	{
 		path: "points",
-		loadComponent: () =>
-			import("./components/points/points.component").then(
-				(m) => m.PointsComponent,
-			),
+		component: PointsComponent,
 	},
 	{
 		path: "load-points",
-		loadComponent: () =>
-			import("./components/load-points/load-points.component").then(
-				(m) => m.LoadPointsComponent,
-			),
+		component: LoadPointsComponent,
 	},
 	{
 		path: "review",
-		loadComponent: () =>
-			import("./components/review-points/review-points.component").then(
-				(m) => m.ReviewPointsComponent,
-			),
+		component: ReviewPointsComponent,
 	},
 	{
 		path: "end-game",
-		loadComponent: () =>
-			import("./components/end-game/end-game.component").then(
-				(m) => m.EndGameComponent,
-			),
+		component: EndGameComponent,
 	},
 ];

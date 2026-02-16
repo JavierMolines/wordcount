@@ -1,4 +1,18 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: it necesary */
+declare interface WordSettings {
+	word: string;
+	point: number;
+}
+
+declare interface GameSettings {
+	words: WordSettings[];
+
+	total?: number;
+	totalPointsWords?: number;
+	negativePoints?: number;
+}
+
+declare type GameInformation = Record<string, GameSettings>;
+
 declare interface SaveGameRecord {
 	date: string;
 	winner: string;
@@ -6,7 +20,7 @@ declare interface SaveGameRecord {
 	winnerPoints: number;
 	players: number;
 
-	game: Array<any>;
+	game: GameInformation;
 
 	isRecords: boolean;
 }

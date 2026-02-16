@@ -5,13 +5,12 @@ import {
 	storageClearPlayers,
 	storageSetPlayers,
 	storageSetPlayersTreeConfig,
-} from "../../helper/storage.helper";
+} from "@helper/storage/session.storage";
 
 @Component({
 	selector: "app-create-user",
 	imports: [RouterModule, ReactiveFormsModule],
 	templateUrl: "./create-user.component.html",
-	styleUrl: "./create-user.component.css",
 })
 export class CreateUserComponent implements OnInit {
 	mininumPlayersValids = 2;
@@ -43,10 +42,10 @@ export class CreateUserComponent implements OnInit {
 
 		this.validToStartGame.set(result);
 
-		if (result) {
-			storageSetPlayers(JSON.stringify(inputsWithText));
-			storageSetPlayersTreeConfig(inputsWithText);
-		}
+		if (!result) return;
+
+		storageSetPlayers(JSON.stringify(inputsWithText));
+		storageSetPlayersTreeConfig(inputsWithText);
 	}
 
 	private validateNonRepeatedNames(players: Array<string>): boolean {

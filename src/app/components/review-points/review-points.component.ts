@@ -10,18 +10,12 @@ import { RouterModule } from "@angular/router";
 import {
 	storageGetPlayers,
 	storageSetRecordsNegativePointsForPlayer,
-} from "../../helper/storage.helper";
-
-interface ReviewPointInput {
-	id: string;
-	value: number;
-}
+} from "@helper/storage/session.storage";
 
 @Component({
 	selector: "app-review-points",
 	imports: [ReactiveFormsModule, RouterModule],
 	templateUrl: "./review-points.component.html",
-	styleUrl: "./review-points.component.css",
 })
 export class ReviewPointsComponent implements OnInit {
 	form: FormGroup;
