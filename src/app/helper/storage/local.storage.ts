@@ -1,6 +1,6 @@
 const STORAGE_PLAYERS_SAVE_RECORDS = "gamesHistory";
 
-export const localStorageGetSaveGameRecords = () => {
+export const localStorageGetSaveGameRecords = (): Array<SaveGameRecord> => {
 	try {
 		const storeRecords =
 			localStorage.getItem(STORAGE_PLAYERS_SAVE_RECORDS) || "[]";

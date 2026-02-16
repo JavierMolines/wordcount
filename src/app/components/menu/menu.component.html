@@ -1,8 +1,26 @@
 <div>
   <p class="text-center text-teal-900">Historial de partidas</p>
   <div class="h-[440px] overflow-y-auto">
-    @for (element of gamesHistoryVisible(); track $index) {
-      <p class="p-2 border-b-2">{{ element }}</p>
+    @for (element of gamesHistoryVisible(); track element.range) {
+      <a
+        [routerLink]="['/end-game']"
+        [queryParams]="element.queryParams"
+        class="py-2 border-b-2 flex items-center justify-between cursor-pointer hover:bg-amber-100"
+      >
+        <p>{{ element.msg }}</p>
+        <svg
+          role="img"
+          class="w-5 h-5 text-teal-600"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </a>
     }
   </div>
 </div>
