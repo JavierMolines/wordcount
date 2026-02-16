@@ -11,7 +11,7 @@ import { RouterModule } from "@angular/router";
 import {
 	storageGetPlayers,
 	storageSetRecordsForPlayer,
-} from "../../helper/storage.helper";
+} from "@helper/storage/session.storage";
 
 @Component({
 	selector: "app-load-points",
@@ -22,7 +22,6 @@ import {
 		ReactiveFormsModule,
 	],
 	templateUrl: "./load-points.component.html",
-	styleUrl: "./load-points.component.css",
 })
 export class LoadPointsComponent implements OnInit {
 	players: WritableSignal<Array<string>> = signal([]);
@@ -46,7 +45,9 @@ export class LoadPointsComponent implements OnInit {
 			return;
 		}
 
-		storageSetRecordsForPlayer(this.form.value.player, this.form.value);
+		const { player, ...rest } = this.form.value;
+
+		storageSetRecordsForPlayer(player, rest);
 		this.resetForm();
 	}
 

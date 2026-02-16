@@ -1,22 +1,19 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: it necesary */
-
 import { Component, OnInit, signal, WritableSignal } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import {
 	storageGetPlayersTreeConfig,
 	storageGetPlayerViewPoint,
 	storageSetTreeConfig,
-} from "../../helper/storage.helper";
+} from "@helper/storage/session.storage";
 
 @Component({
 	selector: "app-points",
 	imports: [RouterModule],
 	templateUrl: "./points.component.html",
-	styleUrl: "./points.component.css",
 })
 export class PointsComponent implements OnInit {
 	playerName: WritableSignal<string> = signal("");
-	playerWords: WritableSignal<Array<any>> = signal([]);
+	playerWords: WritableSignal<Array<WordSettings>> = signal([]);
 	playerTotalPoints: WritableSignal<number> = signal(0);
 
 	ngOnInit() {

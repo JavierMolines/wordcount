@@ -3,13 +3,12 @@ import { Router, RouterModule } from "@angular/router";
 import {
 	storageGetPlayers,
 	storageSetPlayerViewPoint,
-} from "../../helper/storage.helper";
+} from "@helper/storage/session.storage";
 
 @Component({
 	selector: "app-game-board",
 	imports: [RouterModule],
 	templateUrl: "./game-board.component.html",
-	styleUrl: "./game-board.component.css",
 })
 export class GameBoardComponent implements OnInit {
 	players: WritableSignal<Array<string>> = signal([]);
